@@ -3,7 +3,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,19 +25,33 @@ public class SearchingWord {
         hideSuggestion();
     }
 
-    private void showSuggestion() {
+    /**
+     * hiện gợi ý tìm kiếm.
+     */
+    public void showSuggestion() {
         suggestion.setVisible(true);
     }
 
-    private void hideSuggestion() {
+    /**
+     * ẩn gợi ý tìm kiếm.
+     */
+    public void hideSuggestion() {
         suggestion.setVisible(false);
     }
 
+    public void closeSuggest(Parent root) {
+        root.setOnMouseClicked(e -> {
+            hideSuggestion();
+        });
+    }
+
+    /**
+     * ấn chuột vào thanh tìm kiếm
+     */
     public void setMouseEventToSearchView() {
         searchField.setOnMouseClicked(e -> {
             showSuggestion();
             if(getSearchText().equals("")){
-//                loadHistory();
             }
         });
     }
@@ -53,11 +66,10 @@ public class SearchingWord {
                     if (!newValue.equals("")) {
                         addToSuggest(newValue);
                         loadSuggest();
-                        loadSearchViewList(defView, wordViewList);
-                        showSearchView();
+                        loadSearchViewList(defView, wordsView);
+                        showSuggestion();
                     } else {
-                        searchList.clear();
-                        loadHistory();
+                        suggestList.clear();
                     }
                 }
         );
@@ -77,16 +89,15 @@ public class SearchingWord {
         suggestion.getItems().addAll(suggestList);
     }
 
-    public void loadSearchViewList(DefView defView, WordViewList wordViewList) {
-        searchView.setOnMouseClicked(e -> {
-            String temp = searchView.getSelectionModel().getSelectedItem();
-            addToHistorySearch(temp);
-            wordViewList.jumpTo(temp);
-            setCurrent(temp);
-            String def = findDef(getCurrent());
-            findTextField.setText(getCurrent());
-            defView.representDef(def);
-            searchView.setVisible(false);
+    public void loadSearchViewList(DefView defView, WordsView wordsView) {
+        suggestion.setOnMouseClicked(e -> {
+            String temp = suggestion.getSelectionModel().getSelectedItem();
+            wordsView.jumpTo(temp);
+            wordsView.setCurrent(temp);
+            String def = WordList.getDef(wordsView.getCurrent());
+            searchField.setText(wordsView.getCurrent());
+            defView.displayDef(def);
+            suggestion.setVisible(false);
         });
     }
 
@@ -95,7 +106,6 @@ public class SearchingWord {
             hideSuggestion();
             String word = getSearchText();
             wordsView.setCurrent(word);
-//            addToHistorySearch(word);
             wordsView.jumpTo(word);
             WordList.getDef(word);
             String def = (wordsView.getCurrent());

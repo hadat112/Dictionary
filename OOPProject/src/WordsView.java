@@ -1,21 +1,18 @@
 import javafx.scene.Parent;
 import javafx.scene.control.ListView;
 
-import java.io.IOException;
-import java.util.Map;
-
 public class WordsView {
     private final String wvid = "#wordView";
     private ListView<String> wordsView;
     private WordList wordList;
-    private boolean change = false;
+    private static boolean change = false;
     private static String current = "";
 
     public WordsView(Parent root) {
         wordsView = (ListView<String>) root.lookup(wvid);
     }
 
-    public boolean isChange() {
+    public static boolean isChanged() {
         return change;
     }
 
@@ -36,10 +33,10 @@ public class WordsView {
         wordsView.getItems().addAll(wordList.getWordList().keySet());
     }
 
-    public void loadDef(DefView defView) {
+    public void loadDef(DefView defView, SearchingWord searchingWord) {
         wordsView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-//                    findField.hideSearchView();
+                    searchingWord.hideSuggestion();
                     String selectedWordDef = "";
                     if(newValue != null){
                         selectedWordDef = wordList.getWordList().get(newValue).getDef();

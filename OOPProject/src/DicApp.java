@@ -9,12 +9,15 @@ import java.nio.file.Paths;
 
 public class DicApp extends Application {
     private static final String FILE_FXML = "resources/javaFx.fxml";
-    private static Controller controller = new Controller();
+    private static final Controller controller = new Controller();
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         URL url = Paths.get(FILE_FXML).toUri().toURL();
-        System.out.println(url);
         Parent root = FXMLLoader.load(url);
 
         Scene scene = new Scene(root);
@@ -24,15 +27,18 @@ public class DicApp extends Application {
 
         controller.init(root);
         controller.initData();
-        controller.function();
+        controller.function(root);
     }
 
     @Override
     public void stop() throws Exception {
         super.stop();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
+        if (WordsView.isChanged()) {
+            WordList wordList = new WordList();
+            wordList.exportToFile();
+            System.out.println("Save changed");
+        } else {
+            System.out.println("nothing changed");
+        }
     }
 }

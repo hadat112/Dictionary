@@ -11,12 +11,24 @@ public class FixingWord {
         this.fixWordBtn = (Button) root.lookup(fixID);
     }
 
-    public void fixEvent(WordsView wordsView, DefView defView) {
+    /**
+     * Sửa nghĩa từ khi bấm nút.
+     * @param wordsView Dsach từ
+     * @param defView Nghĩa
+     * @param searchingWord Bảng tìm kiếm
+     */
+    public void fixEvent(WordsView wordsView, DefView defView, SearchingWord searchingWord) {
         fixWordBtn.setOnMouseClicked(e -> {
+            searchingWord.hideSuggestion();
             showInputForm(wordsView, defView);
         });
     }
 
+    /**
+     * Thông báo sửa từ.
+     * @param wordsView Dsach từ
+     * @param defView Nghĩa
+     */
     private void showInputForm(WordsView wordsView, DefView defView) {
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Fix word's defination");

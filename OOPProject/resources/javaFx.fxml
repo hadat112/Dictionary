@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1124.0" style="-fx-background-color: #C6E2FF; -fx-border-color: #68838B; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DicApp">
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1124.0" style="-fx-background-color: #97CAEF; -fx-border-color: #FBEEC1; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DicApp">
     <children>
         <HBox layoutX="34.0" layoutY="120.0" prefHeight="564.0" prefWidth="1040.0">
             <children>
-                <ListView fx:id="wordView" prefHeight="558.0" prefWidth="265.0" style="-fx-border-width: 5px; -fx-background-color: #D3D3D3;" />
+                <ListView fx:id="wordView" prefHeight="558.0" prefWidth="265.0" style="-fx-border-width: 1px; -fx-border-color: #999; -fx-background-color: C5CBE3;" />
             <Pane prefHeight="558.0" prefWidth="770.0">
                <children>
                       <WebView fx:id="def" prefHeight="565.0" prefWidth="770.0" style="-fx-border-color: #000000; -fx-border-width: 3px;" />
@@ -30,8 +30,9 @@
                 <Blend />
             </effect>
         </TextField>
-        <Button fx:id="add" layoutX="53.0" layoutY="58.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="47.0" prefWidth="54.0" textFill="#d2acac">
-            <graphic>
+        <ListView fx:id="suggestion" layoutX="308.0" layoutY="104.0" prefHeight="564.0" prefWidth="564.0" style="-fx-border-color: black; -fx-background-color: #C5CBE3;" />
+        <Button fx:id="add" layoutX="1015.0" layoutY="61.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="47.0" prefWidth="54.0" style="-fx-background-color: #E8A87C#E8A87C; -fx-border-radius: 11px;" textFill="#d2acac">
+         <graphic>
                 <ImageView fitHeight="35.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@image/add-word.png" />
@@ -43,9 +44,12 @@
                   <Blend />
                </effect>
                 </ImageView>
-            </graphic>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
-        <Button fx:id="search" ellipsisString="" layoutX="910.0" layoutY="58.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="47.0" prefWidth="54.0" style="-fx-border-radius: 10px;">
+        <Button fx:id="search" ellipsisString="" layoutX="885.0" layoutY="61.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="47.0" prefWidth="54.0" style="-fx-border-radius: 10px; -fx-background-color: #E8A87C;" textFill="#e9dddd">
             <font>
                 <Font size="18.0" />
             </font>
@@ -59,8 +63,11 @@
                </cursor>
                 </ImageView>
             </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
-        <Button fx:id="fix" layoutX="1015.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="42.0">
+        <Button fx:id="fix" layoutX="1015.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="42.0" style="-fx-background-color: #55BCC9 #55BCC9 #55BCC9 #55BCC9;">
             <graphic>
                 <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -71,9 +78,11 @@
                </cursor>
                 </ImageView>
             </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
-        <ListView fx:id="suggestion" layoutX="308.0" layoutY="104.0" prefHeight="564.0" prefWidth="564.0" style="-fx-border-color: black; " />
-        <Button fx:id="delete" layoutX="1015.0" layoutY="175.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="42.0">
+        <Button fx:id="delete" layoutX="1015.0" layoutY="175.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="42.0" style="-fx-background-color: #55BCC9 #55BCC9;">
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -84,8 +93,11 @@
                </cursor>
                 </ImageView>
             </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
-        <Button fx:id="speak" cacheShape="false" ellipsisString="" layoutX="1014.0" layoutY="131.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="42.0">
+        <Button fx:id="speak" cacheShape="false" ellipsisString="" layoutX="1014.0" layoutY="131.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="42.0" style="-fx-background-color: #55BCC9 #55BCC9;">
             <font>
                 <Font size="18.0" />
             </font>
@@ -94,13 +106,16 @@
                     <image>
                         <Image url="@image/listen.png" />
                     </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </ImageView>
             </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
         </Button>
-      <Button fx:id="googleSearch" ellipsisString="" layoutX="983.0" layoutY="59.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="47.0" prefWidth="54.0">
+      <Button fx:id="googleSearch" ellipsisString="" layoutX="950.0" layoutY="61.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="47.0" prefWidth="54.0" style="-fx-background-color: #E8A87C#E8A87C;">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -111,6 +126,9 @@
                </cursor>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
     </children>
 </AnchorPane>

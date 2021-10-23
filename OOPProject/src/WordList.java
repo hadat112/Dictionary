@@ -36,7 +36,7 @@ public class WordList {
     }
 
     /**
-     * Lưu vao file
+     * Lưu dsach vào file text
      */
     public void exportToFile() {
         try {
@@ -49,10 +49,5 @@ public class WordList {
         } catch (FileNotFoundException e) {
             System.out.println("Error");
         }
-    }
-
-
-    public void loadHistory() {
-
     }
 }

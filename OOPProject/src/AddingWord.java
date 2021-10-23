@@ -13,12 +13,17 @@ public class AddingWord {
         this.addWordBtn = (Button) root.lookup(addID);
     }
 
-    public void addEvent(WordsView wordsView) {
+    public void addEvent(WordsView wordsView, SearchingWord searchingWord) {
         addWordBtn.setOnMouseClicked(e -> {
+            searchingWord.hideSuggestion();
             showInputForm(wordsView);
         });
     }
 
+    /**
+     * Hiển thị bảng nhập từ mới.
+     * @param wordsView danh sách từ.
+     */
     private void showInputForm(WordsView wordsView) {
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Add a word to dictionary");
@@ -58,14 +63,23 @@ public class AddingWord {
         dialog.showAndWait();
     }
 
+    /**
+     * Kiểm tra từ trong danh sách.
+     * @param word từ cần ktra
+     * @return boolean
+     */
     private boolean checkWord(String word) {
         return WordList.getWordList().containsKey(word);
     }
 
+    /**
+     * Cảnh báo từ đã suất hiện.
+     * @param word Từ cần thêm
+     */
     public void showWarning(String word) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
-        alert.setHeaderText("Cannot add this word!");
+        alert.setHeaderText("Không thể thêm từ !!!");
         alert.setContentText("Từ: " + word + "\" đã tồn tại!");
 
         Optional<ButtonType> result = alert.showAndWait();
