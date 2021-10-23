@@ -8,9 +8,27 @@ public class WordsView {
     private final String wvid = "#wordView";
     private ListView<String> wordsView;
     private WordList wordList;
+    private boolean change = false;
+    private static String current = "";
 
     public WordsView(Parent root) {
         wordsView = (ListView<String>) root.lookup(wvid);
+    }
+
+    public boolean isChange() {
+        return change;
+    }
+
+    public void setChange() {
+        this.change = true;
+    }
+
+    public void setCurrent(String current) {
+        this.current = current;
+    }
+
+    public String getCurrent(){
+        return current;
     }
 
     public void displayWordList() {
@@ -27,8 +45,12 @@ public class WordsView {
                         selectedWordDef = wordList.getWordList().get(newValue).getDef();
                     }
                     defView.displayDef(selectedWordDef);
-//                    setCurrent(newValue);
+                    current = newValue;
                 }
         );
+    }
+
+    public void jumpTo(String word){
+        wordsView.scrollTo(word);
     }
 }

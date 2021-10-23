@@ -15,7 +15,7 @@ public class WordList {
         return wordList;
     }
 
-    public String getDef(String word) {
+    public static String getDef(String word) {
         if(wordList.containsKey(word)){
             return wordList.get(word).getDef();
         }

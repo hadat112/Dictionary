@@ -24,6 +24,7 @@ public class DicApp extends Application {
 
         controller.init(root);
         controller.initData();
+        controller.function();
     }
 
     @Override

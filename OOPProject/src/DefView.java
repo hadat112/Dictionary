@@ -20,7 +20,7 @@ public class DefView {
     /**
      * xoá hết phần nghĩa.
      */
-    private void clearDefView() {
+    public void clearDefView() {
         defView.getEngine().loadContent("", "text/html");
     }
 
