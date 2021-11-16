@@ -70,6 +70,7 @@ public class SearchingWord {
                         showSuggestion();
                     } else {
                         suggestList.clear();
+                        hideSuggestion();
                     }
                 }
         );
